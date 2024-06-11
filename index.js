@@ -1,25 +1,30 @@
 import express from "express";
 import axios from "axios";
+import dotenv from "dotenv";
+
+// Load environment variables from .env file
+dotenv.config();
+
+// Log environment variables to debug
+// console.log("API_KEY:", process.env.API_KEY);
+// console.log("PORT:", process.env.PORT);
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// 3. Use the public folder for static files.
-//Middlewares
+// Middleware
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
+// API-key
+const yourBearerToken = process.env.API_KEY;
+// console.log("Bearer Token:", yourBearerToken);
 
-//API-key
-const yourBearerToken = "88e12c1424ac8a16f2dc2cb5d1b05218";
-const config = {
-  headers: { Authorization: `Bearer ${yourBearerToken}` },
-};
-const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}`;
+const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=${yourBearerToken}&units=metric`;
 
-//Define routes
+// Define routes
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs", { weather: null });
 });
 
 app.post("/getWeather", async (req, res) => {
@@ -29,8 +34,7 @@ app.post("/getWeather", async (req, res) => {
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${yourBearerToken}&units=metric`
     );
     const weatherData = response.data;
-    console.log(weatherData.main.temp);
-    
+    // console.log(weatherData.main.temp);
 
     // You can send the weather data to the client
     res.render("index.ejs", { weather: weatherData });
@@ -40,8 +44,7 @@ app.post("/getWeather", async (req, res) => {
   }
 });
 
-//Run the server
-
-app.listen(PORT, (req, res) => {
+// Run the server
+app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
