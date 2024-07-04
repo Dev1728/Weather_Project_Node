@@ -52,6 +52,7 @@ i{
         background-size: contain;
     }
     .City_name{
+        margin-top:10px;
         font-size: 20px;
     }
     .weatherAppScreen{
@@ -59,6 +60,7 @@ i{
         width:300px;
         margin-right: 10px;
     }
+  
 }
 
 @media  (max-width: 480px) {
@@ -66,6 +68,7 @@ i{
         background-size: contain;
     }
     .City_name{
+        margin-top:10px;
         font-size: 15px;
     }
     .weatherAppScreen{
