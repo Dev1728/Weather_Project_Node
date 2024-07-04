@@ -52,11 +52,11 @@ i{
         background-size: contain;
     }
     .City_name{
-        margin-top:10px;
+      
         font-size: 20px;
     }
     .weatherAppScreen{
-         padding-top:10px;
+        
         height:500px;
         width:300px;
         margin-right: 10px;
@@ -69,11 +69,9 @@ i{
         background-size: contain;
     }
     .City_name{
-        margin-top:10px;
-        font-size: 15px;
+        font-size: 17px;
     }
     .weatherAppScreen{
-        padding-top:10px;
         height:450px;
         width:250px;
         margin-right: 5px;
