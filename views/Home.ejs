@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current-Weather</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <% if (locals.weather) { %>
+    <script>
+        localStorage.setItem('weatherData', JSON.stringify(<%= JSON.stringify(weather) %>));
+    </script>
+    <div class="weatherAppScreen">
+        <div class="City_name">
+            <i class="bi bi-geo-alt-fill"></i><h2 class="city"><%= weather.name %></h2>
+        </div>
+        <div class="remover">
+            <% 
+                let imgSrc = '/images/mist.png';
+                if (weather.weather[0].main === 'Rain') {
+                    imgSrc = '/images/rain.png';
+                } else if (weather.weather[0].main === 'Clouds') {
+                    imgSrc = '/images/cloud.png';
+                } else if (weather.weather[0].main === 'Clear') {
+                    imgSrc = '/images/clear.png';
+                } else if (weather.weather[0].main === 'Snow') {
+                    imgSrc = '/images/snow.png';
+                }
+            %>
+            <img src="<%= imgSrc %>" class="weatherCond" height="100px" width="130px">
+            <h1 class="temperature"><%= weather.main.temp %>°C</h1>
+            <h2 class="cloudInfo"><%= weather.weather[0].description %></h2>
+            <div class="WeatherFeature">
+                <div class="humidity">
+                    <img src="/images/humidity-svgrepo-com.svg" height="50px" width="50px">
+                    <h2 class="humide"><%= weather.main.humidity %> %</h2>
+                    <h3>Humidity</h3>
+                </div>
+                <div class="WindSpeed">
+                    <img src="/images/wind-svgrepo-com.svg" height="50px" width="50px">
+                    <h2 class="windSp"><%= weather.wind.speed %> m/s</h2>
+                    <h3>Wind Speed</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</body>
+</html>
