@@ -56,6 +56,7 @@ i{
         font-size: 20px;
     }
     .weatherAppScreen{
+         padding-top:10px;
         height:450px;
         width:300px;
         margin-right: 10px;
@@ -72,6 +73,7 @@ i{
         font-size: 15px;
     }
     .weatherAppScreen{
+        padding-top:10px;
         height:400px;
         width:250px;
         margin-right: 5px;
