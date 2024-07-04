@@ -26,7 +26,7 @@ app.post("/getWeather", async (req, res) => {
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
     );
     const weatherData = response.data;
-    res.render("home.ejs", { weather: weatherData });
+    res.render("Home.ejs", { weather: weatherData });
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred while fetching the weather data.");
