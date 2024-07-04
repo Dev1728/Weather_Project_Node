@@ -47,3 +47,45 @@ i{
     
     color: rgb(20, 18, 15);
 }
+@media  (max-width: 767px) {
+    body{
+        background-size: contain;
+    }
+    .City_name{
+        font-size: 20px;
+    }
+    .weatherAppScreen{
+        height:450px;
+        width:300px;
+        margin-right: 10px;
+    }
+}
+
+@media  (max-width: 480px) {
+    body{
+        background-size: contain;
+    }
+    .City_name{
+        font-size: 15px;
+    }
+    .weatherAppScreen{
+        height:400px;
+        width:250px;
+        margin-right: 5px;
+    }
+    .WeatherFeature{
+        font-size: 15px;
+    }
+    .weatherCond{
+        height: 70px;
+        width: 100px;
+    }
+    .imghum {
+        height: 30px;
+        width: 30px;
+    }
+    .imgwin{
+        height: 30px;
+        width: 30px;
+    }
+  }
